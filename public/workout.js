@@ -22,11 +22,13 @@ async function initWorkout() {
 function tallyExercises(exercises) {
   const tallied = exercises.reduce((acc, curr) => {
     if (curr.type === "resistance") {
-      acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
-      acc.totalSets = (acc.totalSets || 0) + curr.sets;
-      acc.totalReps = (acc.totalReps || 0) + curr.reps;
+      acc.totalWeight = (acc.totalWeight || 0) + curr.weight + "lbs";
+      acc.totalSets = (acc.totalSets || 0) + curr.sets + "sets";
+      acc.totalReps = (acc.totalReps || 0) + curr.reps + "reps";
+      acc.totalDuration = (acc.totalDuration || 0) + curr.duration + "minutes";
     } else if (curr.type === "cardio") {
-      acc.totalDistance = (acc.totalDistance || 0) + curr.distance;
+      acc.totalDistance = (acc.totalDistance || 0) + curr.distance + "miles";
+      acc.totalDuration = (acc.totalDuration || 0) + curr.duration + "minutes";
     }
     return acc;
   }, {});
